@@ -27,19 +27,43 @@ class ScaffoldExample extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            InkWell(
-              child: Text(
-                "Clicked Me",
-                style: TextStyle(fontSize: 23.3),
-              ),
-              onTap: () => debugPrint("click me!"),
-            )
+            CustomButton()
+            // InkWell(
+            //   child: Text(
+            //     "Clicked Me",
+            //     style: TextStyle(fontSize: 23.3),
+            //   ),
+            //   onTap: () => debugPrint("click me!"),
+            // )
           ],
         ),
       ),
     );
   }
 }
+
+
+class CustomButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){
+        final snackBar = SnackBar(content: Text("Hello Again"),
+        backgroundColor: Colors.amberAccent.shade700,);
+        Scaffold.of(context).showSnackBar(snackBar);
+      } ,
+      child: Container(
+        padding: EdgeInsets.all(10.0),
+        decoration: BoxDecoration(
+          color: Colors.pinkAccent,
+          borderRadius: BorderRadius.circular(8.0)
+        ),
+        child: Text("Button"),
+      ),
+    );
+  }
+}
+
 
 class Home extends StatelessWidget {
   @override
